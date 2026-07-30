@@ -1,27 +1,144 @@
-import Navbar from "./components/layout/Navbar";
-import Hero from "./components/sections/Hero";
-import Stats from "./components/sections/Stats";
-import Services from "./components/sections/Services";
-import Portfolio from "./components/sections/Portfolio";
-import About from "./components/sections/About";
-import Testimonials from "./components/sections/Testimonials";
-import CTA from "./components/sections/CTA";
-import Footer from "./components/layout/Footer";
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
 
-function App() {
+
+import MainLayout from "./layouts/MainLayout";
+
+
+// Core Pages
+
+import Home from "./pages/Home";
+import PortfolioPage from "./pages/PortfolioPage";
+import ServicesPage from "./pages/ServicesPage";
+import CaseStudiesPage from "./pages/CaseStudiesPage";
+import ProductsPage from "./pages/ProductsPage";
+import ResourcesPage from "./pages/ResourcesPage";
+import ContactPage from "./pages/ContactPage";
+import NotFound from "./pages/NotFound";
+
+
+
+export default function App() {
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Navbar />
-<Hero />
-<Stats />
-<Services />
-<Portfolio />
-<About />
-<Testimonials />
-<CTA />
-<Footer />
-    </div>
-  );
-}
 
-export default App;
+    <Routes>
+
+
+      {/* Main Website Layout */}
+
+      <Route element={<MainLayout />}>
+
+
+        {/* Homepage */}
+
+        <Route
+          path="/"
+          element={<Home />}
+        />
+
+
+        {/* Services */}
+
+        <Route
+          path="/services"
+          element={<ServicesPage />}
+        />
+
+
+        {/* Portfolio */}
+
+        <Route
+          path="/portfolio"
+          element={<PortfolioPage />}
+        />
+
+
+        {/* Case Studies */}
+
+        <Route
+          path="/case-studies"
+          element={<CaseStudiesPage />}
+        />
+
+
+        {/* Digital Products */}
+
+        <Route
+          path="/products"
+          element={<ProductsPage />}
+        />
+
+
+        {/* Resources */}
+
+        <Route
+          path="/resources"
+          element={<ResourcesPage />}
+        />
+
+
+        {/* Contact */}
+
+        <Route
+          path="/contact"
+          element={<ContactPage />}
+        />
+
+
+      </Route>
+
+
+
+      {/* 
+      
+      FUTURE CITY'S DIGITALS V3 ROUTES
+
+      Portfolio Projects:
+
+      /portfolio/veloura
+      /portfolio/auren
+      /portfolio/nexa
+      /portfolio/novaflow
+      /portfolio/mediconnect
+      /portfolio/terrasphere
+
+
+      Case Studies:
+
+      /case-studies/veloura
+      /case-studies/auren
+      /case-studies/nexa
+      /case-studies/novaflow
+      /case-studies/mediconnect
+      /case-studies/terrasphere
+
+
+      Services:
+
+      /services/web-design
+      /services/ui-ux
+      /services/branding
+      /services/seo
+      /services/web-applications
+
+
+      */}
+
+
+
+      {/* 404 */}
+
+      <Route
+        path="*"
+        element={<NotFound />}
+      />
+
+
+    </Routes>
+
+  );
+
+}

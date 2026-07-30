@@ -1,38 +1,102 @@
+import { useState, useEffect } from "react";
+
 import Container from "../ui/Container";
-import Button from "../ui/Button";
+
+import NavbarLogo from "./NavbarLogo";
+import NavbarDesktop from "./NavbarDesktop";
+import NavbarCTA from "./NavbarCTA";
+import NavbarMobile from "./NavbarMobile";
+
 
 export default function Navbar() {
+
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+
+  useEffect(() => {
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+
+
+    window.addEventListener(
+      "scroll",
+      handleScroll
+    );
+
+
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+
+  }, []);
+
+
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur">
-      <Container className="flex h-20 items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-wide text-yellow-500">
-          City's Digitals
-        </h1>
 
-        <nav className="hidden gap-8 md:flex">
-          <a href="#" className="transition hover:text-yellow-400">
-            Home
-          </a>
+    <header
+      className="
+        fixed
+        inset-x-0
+        top-0
+        z-[9999]
+      "
+    >
 
-          <a href="#" className="transition hover:text-yellow-400">
-            Services
-          </a>
+      <Container>
 
-          <a href="#" className="transition hover:text-yellow-400">
-            Portfolio
-          </a>
+        <nav
+          className={`
+            relative
+            mt-5
+            flex
+            items-center
+            justify-between
+            rounded-2xl
+            border
+            px-6
+            py-4
+            transition-all
+            duration-500
+            ${
+              scrolled
+              ?
+              "border-white/10 bg-[#090909]/90 shadow-[0_20px_60px_rgba(0,0,0,.35)] backdrop-blur-2xl"
+              :
+              "border-transparent bg-transparent"
+            }
+          `}
+        >
 
-          <a href="#" className="transition hover:text-yellow-400">
-            About
-          </a>
 
-          <a href="#" className="transition hover:text-yellow-400">
-            Contact
-          </a>
+          <NavbarLogo />
+
+
+          <NavbarDesktop />
+
+
+          <NavbarCTA />
+
+
+          <NavbarMobile
+            mobileOpen={mobileOpen}
+            setMobileOpen={setMobileOpen}
+          />
+
+
         </nav>
 
-        <Button>Get Quote</Button>
+
       </Container>
+
+
     </header>
+
   );
+
 }

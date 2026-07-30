@@ -1,1 +1,130 @@
 @import "tailwindcss";
+
+/* ----------------------------- */
+/* Base */
+/* ----------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #090909;
+  color: white;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ----------------------------- */
+/* Scrollbar */
+/* ----------------------------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090909;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f4d03f;
+}
+
+/* ----------------------------- */
+/* Selection */
+/* ----------------------------- */
+
+::selection {
+  background: #eab308;
+  color: black;
+}
+
+/* ----------------------------- */
+/* Utilities */
+/* ----------------------------- */
+
+.gradient-text {
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #f5d36c
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+
+.gold-glow {
+
+  box-shadow:
+    0 0 50px rgba(234,179,8,.12);
+
+}
+
+.glass {
+
+  background:
+    rgba(255,255,255,.04);
+
+  backdrop-filter:
+    blur(20px);
+
+}
+
+/* ----------------------------- */
+/* Animation */
+/* ----------------------------- */
+
+@keyframes float {
+
+  0% {
+
+    transform:
+      translateY(0);
+
+  }
+
+  50% {
+
+    transform:
+      translateY(-12px);
+
+  }
+
+  100% {
+
+    transform:
+      translateY(0);
+
+  }
+
+}
+
+.float {
+
+  animation:
+    float 6s ease-in-out infinite;
+
+}
