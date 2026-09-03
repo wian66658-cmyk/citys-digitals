@@ -19,6 +19,9 @@ jobs:
         with:
           version: latest
 
+      - name: Authenticate Supabase CLI
+        run: supabase login --token "$SUPABASE_ACCESS_TOKEN"
+
       - name: Link Supabase project
         run: supabase link --project-ref diadjzyompobeepotxgl --password "$SUPABASE_DB_PASSWORD"
 
